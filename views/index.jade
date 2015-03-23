@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h3 Welcome to #{title}
+  form
+    input(type='text', name='search', placeholder='Search on Instagram..') 
+  // example of looping through array in Jade
+  each tagImg, index in data
+    p Example Image #{index + 1} from #{tagImg.from}
+    img(src=tagImg.img)
+
