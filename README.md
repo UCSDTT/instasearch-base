@@ -9,14 +9,14 @@ Boilerplate for an instagram search tool as a starting point for TT App Team app
 5. Go to http://localhost:3000 in your web browser
 
 # Your Task
-+ Implement a simple web application that allows the user to pull up the 30 most
++ Implement a simple web application that allows the user to pull up the 20 most
 recent images for the tags 'thetatau', 'engineering', and 'computerscience'. 
 + Devise and Implement a simple way to switch between these tags.
 + Display the resulting images in the format of your choosing.
 
 #Notes
-+ We use [Jade](http://jade-lang.com/), an html templating language on the app, so we'd like it if you used it here (in place of standard html). You'll notice the starter views
-are already written in jade. 
++ We use [Jade](http://jade-lang.com/), an html templating language, on the app. To get
+you accustomed, we'd like you to use it here as well (in place of standard html). You'll notice the starter views are already written in jade. 
 
 # Tips 
 + Retrieve images with the [Instagram API](https://instagram.com/developer/) in the backend by making HTTP GET requests to the endpoints.
