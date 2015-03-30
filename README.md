@@ -26,5 +26,20 @@ Boilerplate for an instagram search tool as a starting point for TT App Team app
 + app.js
 
 # Our File Structure
-+ ....
-+ ....
+```
+.
+├── app.js
+├── package.json
+├── public
+│   ├── images
+│       └── placeholder.gif
+│   ├── javascripts
+│       └── index.js 
+│   └── stylesheets
+│       └── style.css
+├── routes
+│   ├── index.js
+└── views
+    ├── index.jade
+    └── layout.jade
+```
