@@ -1,11 +1,61 @@
-extends layout
+include mixins
 
-block content
-  h3 Welcome to #{title}
-  form
-    input(type='text', name='search', placeholder='Search on Instagram..') 
-  // example of looping through array in Jade
-  each tagImg, index in data
-    p Example Image #{index + 1} from #{tagImg.from}
-    img(src=tagImg.img)
-    
+doctype
+html( lang="en" )
+    head
+        title=title
+        meta( charset='utf-8' )
+        meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+        meta( name='viewport', content='width=device-width, initial-scale=1.0' )
+        meta( name='description', content='Baking Bootstrap Snippets with Jade' )
+        //- Bootswatch Theme
+        +bootswatch("flatly")
+
+    body(style="padding-bottom:10rem;")
+        .container
+ 
+        script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
+        script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js' )
+        
+        block content
+
+            +nav("Tag Search", "dropdown_menu")
+                +nav_item( "index.html", "active" ) Home
+                +nav_item( "about.html" ) About
+                +nav_item( "contact.html" ) Contact
+                +nav_item_dropdown( "#" )( label="Dropdown")
+                    +nav_header Nav header
+                    +nav_item( "#" ) Action
+                    +nav_item( "#" ) Another action
+                    +nav_divider
+                    +nav_header Nav header
+                    +nav_item( "#" ) Separated link
+                    +nav_item( "#" ) One more separated link
+
+            .jumbotron(align="center")
+                h1 Welcome to #{title}
+                p This is a simple web application for Instagram tag search.
+                p: +button("success", "https://instagram.com/oauth/authorize/?client_id=a66da885c3064c1b801cc6402206e1e9&redirect_uri=http://instagram.com&response_type=token", "medium") Grant access
+
+                form
+                    input(type='text', name='search', placeholder='Search tag on Instagram..', value='#{findthehashtag}') 
+        
+            //- https://api.instagram.com/v1/media/popular?client_id=a66da885c3064c1b801cc6402206e1e9
+            //- https://api.instagram.com/v1/tags/search?q=findthehashtag&access_token=ACCESS-TOKEN
+
+            //- def instagram_photos(findthehashtag) 
+            //-     the_data = HTTParty.get(“https://api.instagram.com/v1/tags/#{hashtag}/media/recent?client_id=#{INSTAGRAM_CLIENT_ID}”)
+            //-     return the_data[“data”]
+            //- end
+
+            .row(align="center")
+                each tagImg, index in data
+                    p Example Image #{index + 1} from #{tagImg.from}
+                    img(src=tagImg.img)
+                    br
+                    p: +button("info", "enlarge.html", "small") Enlarge
+                    br
+                    br
+                
+                //+panel("Panel Heading", "primary") Hello this is the second panel.
+                //+button("primary", "link.html") Primary
