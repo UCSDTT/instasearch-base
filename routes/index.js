@@ -13,6 +13,9 @@ router.get('/', function(req, res) {
   }, {
     from: 'Person B',
     img: '/images/placeholder.gif'
+  }, {
+    from: 'Person C',
+    img: '/images/placeholder.gif'
   }];
 
   res.render('index', { title: 'Tag Search', data: myData });
