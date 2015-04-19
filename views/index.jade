@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 doctype html
 html( lang="en" )
     
@@ -109,3 +110,16 @@ html( lang="en" )
 
                     h1 Instagram Feed
                     #instafeed                    
+=======
+extends layout
+
+block content
+  h3 Welcome to #{title}
+  form
+    input(type='text', name='search', placeholder='Search on Instagram..') 
+  // example of looping through array in Jade
+  each tagImg, index in data
+    p Example Image #{index + 1} from #{tagImg.from}
+    img(src=tagImg.img)
+    
+>>>>>>> 9c701b771cf74e0657f435184868af90fd972874
