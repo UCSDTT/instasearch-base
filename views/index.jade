@@ -1,11 +1,69 @@
-extends layout
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
 
-block content
-  h3 Welcome to #{title}
-  form
-    input(type='text', name='search', placeholder='Search on Instagram..') 
-  // example of looping through array in Jade
-  each tagImg, index in data
-    p Example Image #{index + 1} from #{tagImg.from}
-    img(src=tagImg.img)
-    
+	body
+		block content
+		h1 Welcome to #{title}
+		h3 Please log into your Instagram Account to view the images
+			form
+				input(type='button', value='Login Instagram Account', onclick = "authUser()")
+				br
+				br
+				input(type='button', value='#thetatau', onclick = "thetatau()")
+				input(type='button', value='#engineering', onclick = "engineering()")
+				input(type='button', value='#computerscience', onclick = "computerscience()")
+				input(type='button', value='Clear Feed', onclick = "jQuery('#instafeed').html('')")
+
+		body
+			#instafeed
+			script( type='text/javascript', src='https://rawgit.com/stevenschobert/instafeed.js/master/instafeed.js' )
+			script( type='text/javascript', src='https://rawgit.com/stevenschobert/instafeed.js/master/instafeed.min.js' )
+			script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+
+			script.
+				function authUser(){
+					window.open("https://api.instagram.com/oauth/authorize/?client_id=4d24d9d53a694f7b83bd4f2d314651c0&redirect_uri=http://sharonzheng.github.io/&response_type=code");
+				}
+
+				function thetatau(){
+					var feed = new Instafeed({
+						get: 'tagged',
+						tagName: 'thetatau',
+						sortBy: 'most-recent',
+						clientId: '4d24d9d53a694f7b83bd4f2d314651c0',
+						template: '<a href="{{link}}"><img src="{{image}}" /></a>'
+					});
+					feed.run();
+				}
+
+				function engineering(){
+					var feed = new Instafeed({
+						get: 'tagged',
+						tagName: 'engineering',
+						sortBy: 'most-recent',
+						clientId: '4d24d9d53a694f7b83bd4f2d314651c0',
+						template: '<a href="{{link}}"><img src="{{image}}" /></a>'
+					});
+					feed.run();
+				}
+
+				function computerscience(){
+					var feed = new Instafeed({
+						get: 'tagged',
+						tagName: 'computerscience',
+						sortBy: 'most-recent',
+						clientId: '4d24d9d53a694f7b83bd4f2d314651c0',
+						template: '<a href="{{link}}"><img src="{{image}}" /></a>',
+						
+					});
+					feed.run();
+				}
+
+				function clear(){    
+					jQuery('#instafeed').html('');
+				}
+
+	
