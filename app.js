@@ -5,6 +5,10 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var app = express();
 
+Instagram = require('instagram-node-lib');
+Instagram.set('client_id', '2ea17f7f02bf4e0e81e85abe8f3d3575');
+Instagram.set('client_secret', '08c9541636ee4508a620f28da1bf97bf');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

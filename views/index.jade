@@ -1,11 +1,23 @@
 extends layout
 
 block content
-  h3 Welcome to #{title}
+  h1 Welcome to #{title}
+  p Search any tag you want on instagram, or choose from the tags available below the search bar!
   form
-    input(type='text', name='search', placeholder='Search on Instagram..') 
-  // example of looping through array in Jade
+    input(type='text', name='search', placeholder='Search on Instagram..')
+    
+  p
+    a(href="/?search=computerscience") #computerscience
+  p 
+    a(href="/?search=engineering") #engineering
+  p 
+    a(href="/?search=thetatau") #thetatau
+    
+  p You searched for #{search}
+    
   each tagImg, index in data
-    p Example Image #{index + 1} from #{tagImg.from}
-    img(src=tagImg.img)
+    img(src='#{tagImg.images.low_resolution.url}')
+      
+    
+  
     
