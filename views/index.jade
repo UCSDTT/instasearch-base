@@ -1,3 +1,116 @@
+<<<<<<< HEAD
+doctype html
+html( lang="en" )
+    
+    include mixins
+
+    head
+        title= title
+        meta( charset='utf-8' )
+        meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+        meta( name='viewport', content='width=device-width, initial-scale=1.0' )
+        meta( name='description', content='Baking Bootstrap Snippets with Jade' )
+        //- Bootswatch Theme
+        +bootswatch("flatly")
+        
+    body(style="padding-bottom:10rem;")
+        .container
+ 
+            script( src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' )
+            script( src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js' )
+            script( type='text/javascript', src='https://rawgit.com/stevenschobert/instafeed.js/master/instafeed.js' )
+            script( type='text/javascript', src='https://rawgit.com/stevenschobert/instafeed.js/master/instafeed.min.js' )
+
+            script.
+                function thetatauTagFunction() {
+                    var feed = new Instafeed({
+                        clientId: 'a66da885c3064c1b801cc6402206e1e9',
+                        get: 'tagged',
+                        limit: 20,
+                        tagName: 'thetatau',
+                        sortBy: 'most-recent',
+                        template: '<br><a href="{{link}}" target="_blank"><img src="{{image}}" /><div class="likes">&hearts; {{likes}}</div></a><br>'
+                    });
+                    feed.run();
+                }
+
+                function engineeringTagFunction() {
+                    var feed = new Instafeed({
+                        clientId: 'a66da885c3064c1b801cc6402206e1e9',
+                        get: 'tagged',
+                        limit: 20,
+                        tagName: 'engineering',
+                        sortBy: 'most-recent',
+                        template: '<br><a href="{{link}}" target="_blank"><img src="{{image}}" /><div class="likes">&hearts; {{likes}}</div></a><br>'
+                    });
+                    feed.run();
+                }
+
+                function computerscienceTagFunction() {
+                    var feed = new Instafeed({
+                        clientId: 'a66da885c3064c1b801cc6402206e1e9',
+                        get: 'tagged',
+                        limit: 20,
+                        tagName: 'computerscience',
+                        sortBy: 'most-recent',
+                        template: '<br><a href="{{link}}" target="_blank"><img src="{{image}}" /><div class="likes">&hearts; {{likes}}</div></a><br>'
+                    });
+                    feed.run();
+                }
+
+                function resetTagFunction() {
+                    jQuery('#instafeed').html('');
+                }
+
+            block content
+
+                +nav("Tag Search", "dropdown_menu")
+                    +nav_item( "index.html", "active" ) Home
+                    +nav_item( "about.html" ) About
+                    +nav_item( "contact.html" ) Contact
+                    +nav_item_dropdown( "#" )( label="Dropdown")
+                        +nav_header Nav header
+                        +nav_item( "#" ) Action
+                        +nav_item( "#" ) Another action
+                        +nav_divider
+                        +nav_header Nav header
+                        +nav_item( "#" ) Separated link
+                        +nav_item( "#" ) Separated link
+
+                .jumbotron(align="center")
+                    h1 Welcome to #{title}
+                    p This is a simple web application for Instagram tag search.
+                    p: +button("success", "https://instagram.com/oauth/authorize/?client_id=a66da885c3064c1b801cc6402206e1e9&redirect_uri=http://instagram.com&response_type=token", "medium") Grant access
+                       
+                    //form
+                    //    input(type='text', name='search', placeholder='Search tag on Instagram...')
+
+                    button(onclick='thetatauTagFunction()') #thetatau
+                    = ' '
+                    button(onclick='engineeringTagFunction()') #engineering
+                    = ' '
+                    button(onclick='computerscienceTagFunction()') #computerscience
+
+                    br
+                    br
+
+                    button(onclick='resetTagFunction()') Clear the feed
+
+                    //- select
+                    //-     option(value='default', disabled, selected)
+                    //-         | Search tag on Instagram
+                    //-     option(value='thetatau')
+                    //-         | #thetatau
+                    //-     option(value='engineering')
+                    //-         | #engineering
+                    //-     option(value='computerscience')
+                    //-         | #computerscience
+
+                .row(align="center")
+
+                    h1 Instagram Feed
+                    #instafeed                    
+=======
 extends layout
 
 block content
@@ -9,3 +122,4 @@ block content
     p Example Image #{index + 1} from #{tagImg.from}
     img(src=tagImg.img)
     
+>>>>>>> 9c701b771cf74e0657f435184868af90fd972874
